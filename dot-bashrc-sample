@@ -1,0 +1,39 @@
+# ~/.bash_profile is executed for login shells, 
+# ~/.bashrc is executed for interactive non-login shells (emacs, xterm, etc)
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# set prompt
+# PS1='\w\$ '
+PS1='\h:\W\$ '
+
+# NETID for CSS machines
+NETID=$USER
+
+# Add a new directory if it exists to $PATH
+pathadd() {
+    if [ -d "$1" ]; then
+        if  [[ ":$PATH:" != *":$1:"* ]]; then
+            export PATH="${PATH:+"$PATH:"}$1"
+        fi
+    fi
+}
+
+pathadd /usr/local/bin
+pathadd /usr/local/opt/llvm/bin
+pathadd /CSSDIV/classes/cssjolly
+pathadd $HOME/.cargo/bin
+pathadd $HOME/local/bin
+pathadd $HOME/.local/bin
+
+# enable clang++
+# sets LD_LIBRARY_PATH PERL5LIB PCP_DIR X_SCLS PYTHONPATH PKG_CONFIG_PATH INFOPATH
+# adds /opt/rh/devtoolset-8/root/usr/bin: to PATH
+# If source does not work or is not an option use:
+# exec scl enable llvm-toolset-7.0 bash
+if hash "scl_source" 2>/dev/null; then
+    source scl_source enable llvm-toolset-7.0
+fi
