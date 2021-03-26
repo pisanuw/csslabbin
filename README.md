@@ -2,9 +2,17 @@
 
 Several scripts that work on CSS Lab
 
+To copy/install, copy-paste the lines below one-by-one in shell
+```sh
+$ mkdir "${HOME}/local/bin"
+$ git clone https://github.com/pisanuw/csslabbin "${HOME}/local/bin"
+$ echo "# Adding local/bin to PATH" >> "${HOME}/.bashrc"
+$ echo "export PATH=\"${PATH}:${HOME}/local/bin\"" >> "${HOME}/.bashrc"
+```
+
 # Suggestions for your ~/.bashrc file
 
-## To add NETID/local/bin/ to your PATH
+## To add NETID/local/bin/ to your PATH (if not doen above)
 ```sh
 export PATH="${PATH}:${HOME}/local/bin"
 ```
