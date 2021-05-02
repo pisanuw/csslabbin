@@ -8,6 +8,8 @@
 # git push -f origin master  # Force push master branch to github
 # git gc --aggressive --prune=all     # remove the old files
 
+FOO=`git config --get remote.origin.url`
+
 # https://gist.github.com/stephenhardy/5470814
 # -- Remove the history from 
 rm -rf .git
@@ -17,7 +19,5 @@ git init
 git add .
 git commit -m "start"
 
-# -- push to the github remote repos ensuring you overwrite history
-echo "*** Do these steps manually ***"
-echo git remote add origin git@github.com:<YOUR ACCOUNT>/<YOUR REPOS>.git
-echo git push -u --force origin master
+git remote add origin ${FOO}
+git push -u --force origin master
